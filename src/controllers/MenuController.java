@@ -19,7 +19,7 @@ public class MenuController {
 
         while (running) {
             displayMainMenu();
-            int choice = InputHelper.getUserChoice("Enter your choice: ");
+            int choice = InputHelper.getUserChoice("Enter your choice: ", 1, 5);
 
             switch (choice) {
                 case 1:
@@ -34,7 +34,7 @@ public class MenuController {
                 case 4:
                     handelTransfer();
                     break;
-                case 6:
+                case 5:
                     System.out.println("Thank you for using the Bank Management System. Goodbye!");
                     running = false;
                     break;
