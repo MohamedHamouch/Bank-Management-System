@@ -2,7 +2,7 @@ package models;
 
 import java.util.*;
 
-abstract class Account {
+public abstract class Account {
     protected String accountNumber;
     protected double balance;
     protected List<Operation> operationsList = new ArrayList<>();
