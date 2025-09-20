@@ -57,6 +57,6 @@ public class SavingAccount extends Account {
         System.out.println("Balance: $" + balance);
         System.out.println("Interest Rate: " + interestRate + "%");
         System.out.println("Annual Interest: $" + calculateInterest());
-        System.out.println("Number of Operations: " + operationsList.size());
+        System.out.println("Number of Operations: " + operations.size());
     }
 }

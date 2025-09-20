@@ -21,4 +21,9 @@ public class Deposit extends Operation {
     public void setSource(String source) {
         this.source = source;
     }
+
+    @Override
+    public String toString() {
+        return date + " | DEPOSIT | amount=" + String.format("%.2f", amount) + " | source=" + source;
+    }
 }

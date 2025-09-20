@@ -50,6 +50,6 @@ public class CurrentAccount extends Account {
         System.out.println("Account Number: " + accountNumber);
         System.out.println("Balance: $" + balance);
         System.out.println("Overdraft Limit: $" + overdraft);
-        System.out.println("Number of Operations: " + operationsList.size());
+        System.out.println("Number of Operations: " + operations.size());
     }
 }

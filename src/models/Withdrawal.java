@@ -21,4 +21,9 @@ public class Withdrawal extends Operation {
     public void setDestination(String destination) {
         this.destination = destination;
     }
+
+    @Override
+    public String toString() {
+        return date + " | WITHDRAWAL | amount=" + String.format("%.2f", amount) + " | destination=" + destination;
+    }
 }

@@ -5,7 +5,7 @@ import java.util.*;
 public abstract class Account {
     protected String accountNumber;
     protected double balance;
-    protected List<Operation> operationsList = new ArrayList<>();
+    protected List<Operation> operations = new ArrayList<>();
 
     public Account(String accountNumber, double balance) {
         this.accountNumber = accountNumber;
@@ -32,16 +32,16 @@ public abstract class Account {
         this.balance = balance;
     }
 
-    public List<Operation> getOperationsList() {
-        return operationsList;
+    public List<Operation> getOperations() {
+        return operations;
     }
 
-    public void setOperationsList(List<Operation> operationsList) {
-        this.operationsList = operationsList;
+    public void setOperations(List<Operation> operations) {
+        this.operations = operations;
     }
 
     public void addOperation(Operation operation) {
-        operationsList.add(operation);
+        operations.add(operation);
     }
 
     public abstract boolean withdraw(double amount, String destination);
