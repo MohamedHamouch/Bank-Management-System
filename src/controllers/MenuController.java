@@ -68,6 +68,7 @@ public class MenuController {
     }
 
     private void handelDeposit() {
+        System.out.println("\n=================");
         System.out.println("Deposit selected");
         System.out.println("=================");
         String msg = accountController.deposit();
@@ -75,6 +76,7 @@ public class MenuController {
     }
 
     private void handelWithdraw() {
+        System.out.println("\n=================");
         System.out.println("Withdraw selected");
         System.out.println("=================");
         String msg = accountController.withdraw();
@@ -82,6 +84,7 @@ public class MenuController {
     }
 
     private void handelTransfer() {
+        System.out.println("\n=================");
         System.out.println("Transfer selected");
         System.out.println("=================");
         String msg = accountController.transfer();
@@ -89,6 +92,7 @@ public class MenuController {
     }
 
     private void handelBalanceCheck() {
+        System.out.println("\n=================");
         System.out.println("Balance check selected");
         System.out.println("=================");
         String msg = accountController.balance();
@@ -96,11 +100,13 @@ public class MenuController {
     }
 
     private void handelOperationHistory() {
+        System.out.println("\n=================");
         System.out.println("Operation history selected");
         System.out.println("=================");
         accountController.operationHistory();
     }
     private void handelDetails() {
+        System.out.println("\n=================");
         System.out.println("Account details selected");
         System.out.println("=================");
         accountController.accountDetails();
