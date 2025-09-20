@@ -46,7 +46,7 @@ public class SavingAccount extends Account {
     /* public void applyInterest() {
         double interest = calculateInterest();
         this.balance += interest;
-        Deposit interestDeposit = new Deposit(interest, Deposit.Source.EXTERNAL_TRANSFER);
+        Deposit interestDeposit = new Deposit(interest, "Interest");
         addOperation(interestDeposit);
     }*/
 
