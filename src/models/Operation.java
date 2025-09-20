@@ -15,9 +15,7 @@ public abstract class Operation {
     }
 
     public Operation() {
-        this.number = UUID.randomUUID();
-        this.amount = 0;
-        this.date = LocalDate.now();
+        this(0);
     }
 
     public UUID getNumber() {
