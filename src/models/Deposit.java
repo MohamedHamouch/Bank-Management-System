@@ -2,43 +2,23 @@ package models;
 
 public class Deposit extends Operation {
 
-    public enum Source {
-        EXTERNAL_TRANSFER("External Transfer"),
-        CASH_DEPOSIT("Cash Deposit"),
-        SALARY("Salary");
-
-        private final String label;
-
-        Source(String label) {
-            this.label = label;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-        @Override
-        public String toString() {
-            return label;
-        }
-    }
-
-    private Source source;
+    private String source;
 
     public Deposit() {
         super();
+        this.source = "Unknown";
     }
 
-    public Deposit(double amount, Source source) {
+    public Deposit(double amount, String source) {
         super(amount);
         this.source = source;
     }
 
-    public Source getSource() {
+    public String getSource() {
         return source;
     }
 
-    public void setSource(Source source) {
+    public void setSource(String source) {
         this.source = source;
     }
 }

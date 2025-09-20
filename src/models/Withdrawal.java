@@ -2,43 +2,23 @@ package models;
 
 public class Withdrawal extends Operation {
 
-    public enum Destination {
-        ATM_MACHINE("ATM Machine"),
-        CHECK("Check"),
-        OUTGOING_TRANSFER("Outgoing Transfer");
-
-        private final String label;
-
-        Destination(String label) {
-            this.label = label;
-        }
-
-        public String getLabel() {
-            return label;
-        }
-
-        @Override
-        public String toString() {
-            return label;
-        }
-    }
-
-    private Destination destination;
+    private String destination;
 
     public Withdrawal() {
         super();
+        this.destination = "Unknown";
     }
 
-    public Withdrawal(double amount, Destination destination) {
+    public Withdrawal(double amount, String destination) {
         super(amount);
         this.destination = destination;
     }
 
-    public Destination getDestination() {
+    public String getDestination() {
         return destination;
     }
 
-    public void setDestination(Destination destination) {
+    public void setDestination(String destination) {
         this.destination = destination;
     }
 }
