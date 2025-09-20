@@ -13,7 +13,7 @@ public class MenuController {
 
         while (running) {
             displayMainMenu();
-            int choice = InputHelper.getUserChoice("Enter your choice: ", 1, 6);
+            int choice = InputHelper.getUserChoice("Enter your choice: ", 1, 8);
 
             switch (choice) {
                 case 1:
@@ -35,6 +35,9 @@ public class MenuController {
                     handelOperationHistory();
                     break;
                 case 7:
+                    handelDetails();
+                    break;
+                case 8:
                     System.out.println("Thank you for using the Bank Management System. Goodbye!");
                     running = false;
                     break;
@@ -52,7 +55,8 @@ public class MenuController {
         System.out.println("4. Transfer");
         System.out.println("5. Check Account Balance");
         System.out.println("6. View Operation History");
-        System.out.println("7. Exit");
+        System.out.println("7. View Account Details");
+        System.out.println("8. Exit");
     }
 
     private void handelCreate() {
@@ -88,6 +92,10 @@ public class MenuController {
     private void handelOperationHistory() {
         System.out.println("Operation history selected");
         accountController.operationHistory();
+    }
+    private void handelDetails() {
+        System.out.println("Account details selected");
+        accountController.accountDetails();
     }
 
 }

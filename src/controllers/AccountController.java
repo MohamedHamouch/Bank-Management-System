@@ -110,6 +110,15 @@ public class AccountController {
             System.out.println(op);
         }
     }
+    public void accountDetails() {
+        String accNum = InputHelper.getAccountNumber("Account number: ");
+        Account acc = accountService.getAccount(accNum);
+        if (acc == null) {
+            System.out.println("Account not found.");
+            return;
+        }
+        acc.displayDetails();
+    }
 
     public String balance() {
         String accNum = InputHelper.getAccountNumber("Account number: ");
