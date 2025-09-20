@@ -1,14 +1,11 @@
 package controllers;
 
-import java.util.Scanner;
-
 import models.Account;
-import models.Deposit;
+import models.Operation;
 import services.AccountService;
 import helpers.InputHelper;
 
 public class AccountController {
-    //private final Scanner scanner = new Scanner(System.in);
     private final AccountService accountService = new AccountService();
 
     public String createAccount() {
@@ -88,6 +85,30 @@ public class AccountController {
         }
 
         return accountService.withdraw(accNum, amount, destination);
+    }
+
+    public String transfer() {
+        String fromAcc = InputHelper.getAccountNumber("Source account number : ");
+        String toAcc = InputHelper.getAccountNumber("Destination account number : ");
+        double amount = InputHelper.getDouble("Amount to transfer: ");
+        return accountService.transfer(fromAcc, toAcc, amount);
+    }
+
+    public void operationHistory() {
+        String accNum = InputHelper.getAccountNumber("Account number: ");
+        Account acc = accountService.getAccount(accNum);
+        if (acc == null) {
+            System.out.println("Account not found.");
+            return;
+        }
+        if (acc.getOperations().isEmpty()) {
+            System.out.println("No operations.");
+            return;
+        }
+        System.out.println("Operation history for " + accNum + ":");
+        for (Operation op : acc.getOperations()) {
+            System.out.println(op);
+        }
     }
 
     public String balance() {

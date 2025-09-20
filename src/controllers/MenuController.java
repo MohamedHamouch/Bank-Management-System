@@ -1,14 +1,8 @@
 package controllers;
 
-import java.util.Scanner;
-import controllers.AccountController;
 import helpers.InputHelper;
 
-import static helpers.InputHelper;
-
-
 public class MenuController {
-    private final Scanner scanner = new Scanner(System.in);
     private final AccountController accountController = new AccountController();
 
 
@@ -19,7 +13,7 @@ public class MenuController {
 
         while (running) {
             displayMainMenu();
-            int choice = InputHelper.getUserChoice("Enter your choice: ", 1, 5);
+            int choice = InputHelper.getUserChoice("Enter your choice: ", 1, 6);
 
             switch (choice) {
                 case 1:
@@ -35,6 +29,12 @@ public class MenuController {
                     handelTransfer();
                     break;
                 case 5:
+                    handelBalanceCheck();
+                    break;
+                case 6:
+                    handelOperationHistory();
+                    break;
+                case 7:
                     System.out.println("Thank you for using the Bank Management System. Goodbye!");
                     running = false;
                     break;
@@ -42,8 +42,6 @@ public class MenuController {
                     System.out.println("Invalid choice. Please try again.");
             }
         }
-
-        scanner.close();
     }
 
     private void displayMainMenu() {
@@ -52,24 +50,44 @@ public class MenuController {
         System.out.println("2. Deposit");
         System.out.println("3. Withdraw");
         System.out.println("4. Transfer");
-        System.out.println("5. Exit");
+        System.out.println("5. Check Account Balance");
+        System.out.println("6. View Operation History");
+        System.out.println("7. Exit");
     }
 
     private void handelCreate() {
         System.out.println("Create new account selected");
-        accountController.createAccount();
+        String msg = accountController.createAccount();
+        System.out.println(msg);
     }
 
     private void handelDeposit() {
         System.out.println("Deposit selected");
+        String msg = accountController.deposit();
+        System.out.println(msg);
     }
 
     private void handelWithdraw() {
         System.out.println("Withdraw selected");
+        String msg = accountController.withdraw();
+        System.out.println(msg);
     }
 
     private void handelTransfer() {
         System.out.println("Transfer selected");
+        String msg = accountController.transfer();
+        System.out.println(msg);
+    }
+
+    private void handelBalanceCheck() {
+        System.out.println("Balance check selected");
+        String msg = accountController.balance();
+        System.out.println(msg);
+    }
+
+    private void handelOperationHistory() {
+        System.out.println("Operation history selected");
+        accountController.operationHistory();
     }
 
 }

@@ -3,11 +3,11 @@ package services;
 import models.Account;
 import models.CurrentAccount;
 import models.SavingAccount;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.Map;
 
 public class AccountService {
-    private final Map<String, Account> accounts = new LinkedHashMap<>();
+    private final Map<String, Account> accounts = new HashMap<>();
 
     private int counter = 0;
 
@@ -65,7 +65,7 @@ public class AccountService {
         if (acc == null) {
             return "Account not found";
         }
-        if( acc.getBalance() <= 0) {
+        if (acc.getBalance() <= 0) {
             return "Insufficient funds, balance is below or equal to 0";
         }
         boolean accepted = acc.withdraw(amount, destination);
@@ -75,11 +75,39 @@ public class AccountService {
         return "Successful Withdrawal. New balance = " + acc.getBalance();
     }
 
-    public Account getAccount(String accountNumber) {
-        return accounts.get(accountNumber);
+    public String transfer(String fromAccNum, String toAccNum, double amount) {
+        if (amount <= 0) {
+            return "Transfer failed: amount must be > 0";
+        }
+        if (fromAccNum.equals(toAccNum)) {
+            return "Transfer failed: cannot transfer to the same account.";
+        }
+
+        Account from = accounts.get(fromAccNum);
+        if (from == null) {
+            return "Transfer failed: source account not found.";
+        }
+        Account to = accounts.get(toAccNum);
+        if (to == null) {
+            return "Transfer failed: destination account not found.";
+        }
+
+        if (from.getBalance() <= 0) {
+            return "Transfer failed: source balance is below or equal to 0.";
+        }
+
+        boolean accepted = from.withdraw(amount, "Transfer");
+        if (!accepted) {
+            return "Transfer denied: insufficient funds or overdraft limit reached.";
+        }
+
+        to.deposit(amount, "Transfer");
+
+        return "Successful transfer. New balances -> " + fromAccNum + ": " + from.getBalance()
+                + " | " + toAccNum + ": " + to.getBalance();
     }
 
-    public Map<String, Account> getAllAccounts() {
-        return accounts;
+    public Account getAccount(String accountNumber) {
+        return accounts.get(accountNumber);
     }
 }
