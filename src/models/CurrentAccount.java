@@ -22,25 +22,21 @@ public class CurrentAccount extends Account {
     }
 
     @Override
-    public String withdraw(double amount) {
+    public boolean withdraw(double amount, String destination) {
         double newBalance = this.balance - amount;
-
         if (newBalance < -this.overdraft) {
-            return "Withdrawal denied: insufficient funds!";
-        } else {
-            this.balance = newBalance;
-            Withdrawal withdrawal = new Withdrawal(amount, Withdrawal.Destination.ATM_MACHINE);
-            addOperation(withdrawal);
-            return "Withdrawal successful: new balance = " + this.balance;
+            return false;
         }
+        this.balance = newBalance;
+        addOperation(new Withdrawal(amount, destination));
+        return true;
     }
 
     @Override
-    public String deposit(double amount, Deposit.Source source) {
+    public void deposit(double amount, String source) {
         this.balance += amount;
         Deposit deposit = new Deposit(amount, source);
         addOperation(deposit);
-        return "Deposit successful: new balance = " + this.balance;
     }
 
     @Override

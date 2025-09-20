@@ -22,23 +22,20 @@ public class SavingAccount extends Account {
     }
 
     @Override
-    public String withdraw(double amount) {
+    public boolean withdraw(double amount, String destination) {
         if (amount > this.balance) {
-            return "Withdrawal denied: insufficient funds!";
-        } else {
-            this.balance -= amount;
-            Withdrawal withdrawal = new Withdrawal(amount, Withdrawal.Destination.ATM_MACHINE);
-            addOperation(withdrawal);
-            return "Withdrawal successful: new balance = " + this.balance;
+            return false;
         }
+        this.balance -= amount;
+        addOperation(new Withdrawal(amount, destination));
+        return true;
     }
 
     @Override
-    public String deposit(double amount, Deposit.Source source) {
+    public void deposit(double amount, String source) {
         this.balance += amount;
         Deposit deposit = new Deposit(amount, source);
         addOperation(deposit);
-        return "Deposit successful: new balance = " + this.balance;
     }
 
     @Override
@@ -46,12 +43,12 @@ public class SavingAccount extends Account {
         return (this.balance * this.interestRate) / 100;
     }
 
-    public void applyInterest() {
+    /* public void applyInterest() {
         double interest = calculateInterest();
         this.balance += interest;
         Deposit interestDeposit = new Deposit(interest, Deposit.Source.EXTERNAL_TRANSFER);
         addOperation(interestDeposit);
-    }
+    }*/
 
     @Override
     public void displayDetails() {

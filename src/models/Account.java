@@ -13,8 +13,7 @@ public abstract class Account {
     }
 
     public Account() {
-        this.accountNumber = "0000";
-        this.balance = 0;
+        this("0000", 0);
     }
 
     public String getAccountNumber() {
@@ -45,9 +44,9 @@ public abstract class Account {
         operationsList.add(operation);
     }
 
-    public abstract String withdraw(double amount);
+    public abstract boolean withdraw(double amount, String destination);
 
-    public abstract String deposit(double amount, Deposit.Source source);
+    public abstract void deposit(double amount, String source);
 
     public abstract double calculateInterest();
 
