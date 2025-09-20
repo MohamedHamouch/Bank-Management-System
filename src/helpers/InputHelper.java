@@ -3,7 +3,7 @@ package helpers;
 import java.util.Scanner;
 
 public class InputHelper {
-    private static Scanner sc = new Scanner(System.in);
+    private final static Scanner sc = new Scanner(System.in);
 
     public static int getInt(String message) {
         int number;
@@ -64,5 +64,14 @@ public class InputHelper {
         return choice;
     }
 
+    public static String getAccountNumber(String message) {
+        while (true) {
+            String an = getString(message);
+            if (an.matches("CPT-\\d{5}")) {
+                return an;
+            }
+            System.out.println("Invalid format. Expected CPT-12345");
+        }
+    }
 
 }
