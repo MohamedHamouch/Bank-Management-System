@@ -60,41 +60,49 @@ public class MenuController {
     }
 
     private void handelCreate() {
+        System.out.println("\n=================");
         System.out.println("Create new account selected");
+        System.out.println("=================");
         String msg = accountController.createAccount();
         System.out.println(msg);
     }
 
     private void handelDeposit() {
         System.out.println("Deposit selected");
+        System.out.println("=================");
         String msg = accountController.deposit();
         System.out.println(msg);
     }
 
     private void handelWithdraw() {
         System.out.println("Withdraw selected");
+        System.out.println("=================");
         String msg = accountController.withdraw();
         System.out.println(msg);
     }
 
     private void handelTransfer() {
         System.out.println("Transfer selected");
+        System.out.println("=================");
         String msg = accountController.transfer();
         System.out.println(msg);
     }
 
     private void handelBalanceCheck() {
         System.out.println("Balance check selected");
+        System.out.println("=================");
         String msg = accountController.balance();
         System.out.println(msg);
     }
 
     private void handelOperationHistory() {
         System.out.println("Operation history selected");
+        System.out.println("=================");
         accountController.operationHistory();
     }
     private void handelDetails() {
         System.out.println("Account details selected");
+        System.out.println("=================");
         accountController.accountDetails();
     }
 
